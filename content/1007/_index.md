@@ -1,6 +1,6 @@
 ---
 title: 耐药菌疑案始末
-aid: "1007"
+volume: "1007"
 author: 恶魔后花园
 tags:
   - 同人

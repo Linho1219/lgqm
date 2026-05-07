@@ -1,0 +1,353 @@
+/* ===== Reading-optimized styles for 临高启明 ===== */
+
+/* --- Base & Typography --- */
+:root {
+  --bg: #faf8f5;
+  --bg-secondary: #f0ede8;
+  --text: #2c2c2c;
+  --text-secondary: #666;
+  --text-muted: #999;
+  --link: #2563a8;
+  --link-hover: #1a4a80;
+  --border: #e0ddd8;
+  --nav-bg: #fff;
+  --nav-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --card-bg: #fff;
+  --card-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  --btn-info-bg: #4a7fb5;
+  --btn-info-hover: #3d6d9e;
+  --btn-primary-bg: #5a8a5e;
+  --btn-primary-hover: #4a7a4e;
+  --table-stripe: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme='dark'] {
+  --bg: #1a1a1e;
+  --bg-secondary: #242428;
+  --text: #d8d4cf;
+  --text-secondary: #a0a0a0;
+  --text-muted: #707070;
+  --link: #7cb3e0;
+  --link-hover: #a0ccee;
+  --border: #333338;
+  --nav-bg: #222226;
+  --nav-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --card-bg: #242428;
+  --card-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  --btn-info-bg: #3d6d9e;
+  --btn-info-hover: #4a7fb5;
+  --btn-primary-bg: #4a7a4e;
+  --btn-primary-hover: #5a8a5e;
+  --table-stripe: rgba(255, 255, 255, 0.02);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Noto Sans CJK SC', 'Source Han Sans SC',
+    system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+/* --- Navbar --- */
+.navbar {
+  background: var(--nav-bg) !important;
+  box-shadow: var(--nav-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-item,
+.navbar-link {
+  color: var(--text) !important;
+}
+
+.navbar-item:hover,
+.navbar-link:hover {
+  background-color: var(--bg-secondary) !important;
+  color: var(--link) !important;
+}
+
+.navbar-dropdown {
+  background-color: var(--nav-bg) !important;
+  border-color: var(--border) !important;
+}
+
+.navbar-divider {
+  background-color: var(--border) !important;
+}
+
+.navbar-burger span {
+  background-color: var(--text) !important;
+}
+
+/* --- Buttons --- */
+.button.is-info {
+  background-color: var(--btn-info-bg) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.button.is-info:hover {
+  background-color: var(--btn-info-hover) !important;
+  transform: translateY(-1px);
+}
+
+.button.is-primary {
+  background-color: var(--btn-primary-bg) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.button.is-primary:hover {
+  background-color: var(--btn-primary-hover) !important;
+  transform: translateY(-1px);
+}
+
+/* --- Layout --- */
+.section {
+  background: var(--bg);
+  padding: 2rem 1.5rem;
+}
+
+.container {
+  max-width: 960px !important;
+}
+
+/* --- Article content (reading area) --- */
+article.post {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+}
+
+article.post.content p {
+  line-height: 2;
+  margin-bottom: 1.2em;
+  text-align: justify;
+  font-size: 1.05em;
+}
+
+article.post.content h1,
+article.post.content h2,
+article.post.content h3 {
+  color: var(--text);
+  font-weight: 700;
+  margin-bottom: 0.8em;
+}
+
+article.post .title {
+  color: var(--text) !important;
+}
+
+article.post .subtitle {
+  color: var(--text-secondary) !important;
+}
+
+article.post img {
+  display: block;
+  margin: 1.5em auto;
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+/* --- Tables --- */
+.table,
+table.table-auto {
+  width: 100%;
+  background-color: transparent !important;
+  color: var(--text) !important;
+  border-collapse: collapse;
+}
+
+.table th {
+  color: var(--text-secondary) !important;
+  border-bottom: 2px solid var(--border) !important;
+  padding: 0.6em 0.8em;
+  font-size: 0.9em;
+  font-weight: 600;
+  text-align: left;
+}
+
+.table td {
+  border-bottom: 1px solid var(--border) !important;
+  padding: 0.6em 0.8em;
+  color: var(--text) !important;
+}
+
+.table tbody tr:hover {
+  background-color: var(--table-stripe) !important;
+}
+
+.table td a {
+  color: var(--link);
+}
+
+.table td a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* --- Chapter navigation (prev/next) --- */
+nav.chapter-nav {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem auto;
+  max-width: 48rem;
+}
+
+nav.chapter-nav .nav-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+nav.chapter-nav .nav-card:hover {
+  box-shadow: var(--card-shadow);
+  transform: translateY(-2px);
+}
+
+nav.chapter-nav .nav-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+nav.chapter-nav .nav-title {
+  font-size: 0.95rem;
+  color: var(--link);
+  text-align: center;
+}
+
+/* --- Footer / Giscus area --- */
+.giscus-wrapper {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+/* --- Navbar button labels --- */
+.icon-text-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .section {
+    padding: 1.2rem 0.8rem;
+  }
+
+  article.post {
+    padding: 1rem 0;
+  }
+
+  article.post.content p {
+    font-size: 1em;
+    line-height: 1.85;
+    margin-bottom: 1em;
+  }
+
+  /* Tables: horizontal scroll on mobile */
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table th,
+  .table td {
+    white-space: nowrap;
+    padding: 0.5em 0.6em;
+    font-size: 0.9em;
+  }
+
+  /* Chapter nav: stack vertically, touch-friendly */
+  nav.chapter-nav {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  nav.chapter-nav .nav-card {
+    padding: 0.8rem 1rem;
+    min-height: 3rem;
+  }
+
+  /* Navbar mobile menu */
+  .navbar-menu {
+    background-color: var(--nav-bg) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding-bottom: 0.5rem;
+  }
+
+  .navbar-end .buttons {
+    justify-content: flex-start;
+    padding: 0.5rem;
+  }
+
+  .navbar-end .button {
+    font-size: 0.8rem;
+    padding: 0.4em 0.8em;
+  }
+
+  /* Subtitle meta info: wrap nicely */
+  article.post .subtitle {
+    font-size: 0.85em !important;
+    line-height: 1.6;
+  }
+
+  /* Giscus */
+  .giscus-wrapper {
+    padding-top: 0.5rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 400px) {
+  .section {
+    padding: 1rem 0.5rem;
+  }
+
+  article.post.content p {
+    font-size: 0.95em;
+    line-height: 1.8;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.85em;
+    padding: 0.4em 0.5em;
+  }
+}

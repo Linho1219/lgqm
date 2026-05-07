@@ -1,6 +1,6 @@
 ---
 title: 澳宋动力
-aid: "1041"
+volume: "1041"
 author: 镭射
 tags:
   - 同人

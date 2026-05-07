@@ -4,3 +4,23 @@
 
 - Discord群：https://discord.gg/XgE4xJM
 - 电报群：https://t.me/lingaoqiming
+
+## 技术栈
+
+- [Astro](https://astro.build/) — 静态站点生成
+- [Bulma](https://bulma.io/) — CSS 框架
+- [Giscus](https://giscus.app/) — 评论系统
+
+## 开发
+
+```bash
+npm install
+npm run dev
+```
+
+## 构建
+
+```bash
+npm run build
+# 输出在 dist/ 目录
+```

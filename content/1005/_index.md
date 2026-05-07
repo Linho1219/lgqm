@@ -1,6 +1,6 @@
 ---
 title: H-1300的奇妙漂流
-aid: "1005"
+volume: "1005"
 author: Plusonesec
 source: https://lgqm.gq/thread-3683-1-1.html
 tags:

@@ -1,6 +1,6 @@
 ---
 title: 鸳鸯茶
-aid: "1032"
+volume: "1032"
 author: 孟仲玄
 tags:
   - 同人

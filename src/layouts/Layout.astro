@@ -1,0 +1,220 @@
+---
+import 'bulma/css/bulma.min.css';
+import '../styles/global.css';
+
+const { title } = Astro.props;
+const pageTitle = `${title} | 临高启明公开图书馆`;
+---
+
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#da532c" />
+    <title>{pageTitle}</title>
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-N915MBK8Q7"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-N915MBK8Q7', {
+        page_path: window.location.pathname,
+      });
+    </script>
+    <!-- Apply saved theme before render to prevent flash -->
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t) t = JSON.parse(t);
+          if (t === 'dark')
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a href="/" class="navbar-item">
+          <strong>临高启明公开图书馆</strong>
+        </a>
+        <button
+          class="navbar-burger burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbar-main"
+          id="navbar-burger"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div id="navbar-main" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="https://t.me/lingaoqiming">讨论群</a>
+          <a class="navbar-item" href="https://beichao.halu.lu">北朝</a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="/#">更多</a>
+            <div class="navbar-dropdown">
+              <a
+                class="navbar-item"
+                href="https://book.qidian.com/info/1262627">起点</a
+              >
+              <a class="navbar-item" href="https://chuiniu.duanshu.com/"
+                >短书</a
+              >
+              <hr class="navbar-divider" />
+              <a class="navbar-item" href="https://lgqm.gq/">论坛</a>
+              <a class="navbar-item" href="https://lgqm.huijiwiki.com/"
+                >Wiki</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <button class="button is-info" id="btn-theme">
+                <span class="icon-text-label">🌓</span>
+              </button>
+              <button class="button is-info" id="btn-font-up">
+                <span class="icon-text-label">A+</span>
+              </button>
+              <button class="button is-info" id="btn-font-down">
+                <span class="icon-text-label">A-</span>
+              </button>
+              <a
+                class="button is-primary"
+                href="https://github.com/lzjluzijie/lgqm"
+              >
+                <span class="icon-text-label">源码</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="section">
+      <main class="container" id="main-content">
+        <slot />
+      </main>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+      <main class="container">
+        <div class="giscus-wrapper" id="giscus-container">
+          <script
+            is:inline
+            src="https://giscus.app/client.js"
+            data-repo="lzjluzijie/lgqm-giscus"
+            data-repo-id="R_kgDONW3QMQ"
+            data-category="Giscus"
+            data-category-id="DIC_kwDONW3QMc4Ckv9N"
+            data-mapping="pathname"
+            data-term="Hello"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="light"
+            data-lang="zh-CN"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </main>
+    </section>
+
+    <script is:inline>
+      // Navbar burger toggle
+      document
+        .getElementById('navbar-burger')
+        .addEventListener('click', function () {
+          this.classList.toggle('is-active');
+          document.getElementById('navbar-main').classList.toggle('is-active');
+        });
+
+      // Font size
+      var fontSize = 0;
+      try {
+        var stored = localStorage.getItem('font-size');
+        if (stored !== null) fontSize = JSON.parse(stored);
+      } catch (e) {}
+
+      function applyFontSize() {
+        document.getElementById('main-content').style.fontSize =
+          Math.pow(1.125, fontSize) + 'em';
+        localStorage.setItem('font-size', JSON.stringify(fontSize));
+      }
+      applyFontSize();
+
+      document
+        .getElementById('btn-font-up')
+        .addEventListener('click', function () {
+          if (fontSize >= 8) return;
+          fontSize++;
+          applyFontSize();
+        });
+      document
+        .getElementById('btn-font-down')
+        .addEventListener('click', function () {
+          if (fontSize <= -8) return;
+          fontSize--;
+          applyFontSize();
+        });
+
+      // Theme toggle + Giscus sync
+      var theme = 'light';
+      try {
+        var s = localStorage.getItem('theme');
+        if (s) theme = JSON.parse(s);
+      } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
+
+      function getGiscusTheme() {
+        return theme === 'dark' ? 'dark' : 'light';
+      }
+
+      function setGiscusTheme(giscusTheme) {
+        var iframe = document.querySelector('iframe.giscus-frame');
+        if (iframe) {
+          iframe.contentWindow.postMessage(
+            { giscus: { setConfig: { theme: giscusTheme } } },
+            'https://giscus.app'
+          );
+        }
+      }
+
+      // Set initial Giscus theme once it loads
+      window.addEventListener('message', function (event) {
+        if (event.origin !== 'https://giscus.app') return;
+        if (!(typeof event.data === 'object' && event.data.giscus)) return;
+        // Giscus iframe is ready, sync theme
+        setGiscusTheme(getGiscusTheme());
+      });
+
+      document
+        .getElementById('btn-theme')
+        .addEventListener('click', function () {
+          theme = theme === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', theme);
+          localStorage.setItem('theme', JSON.stringify(theme));
+          setGiscusTheme(getGiscusTheme());
+        });
+    </script>
+  </body>
+</html>

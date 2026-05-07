@@ -1,6 +1,6 @@
 ---
-aid: "9000"
-zid: "test"
+volume: "9000"
+chapter: "test"
 title: 测试
 author: Halulu
 ---

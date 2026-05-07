@@ -1,30 +1,21 @@
 {
-  "name": "lgqm",
-  "version": "0.1.0",
-  "private": true,
+  "name": "astro-site",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@giscus/react": "^3.0.0",
-    "bulma": "1.0.2",
-    "eslint-config-next": "15.0.3",
-    "gray-matter": "4.0.3",
-    "micromark": "4.0.1",
-    "micromark-extension-gfm": "3.0.0",
-    "next": "15.0.3",
-    "react": "18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "printWidth": 80
-  },
-  "devDependencies": {
-    "prettier": "3.4.1",
-    "sass": "^1.81.0"
+    "astro": "^6.2.2",
+    "bulma": "^1.0.4",
+    "gray-matter": "^4.0.3",
+    "micromark": "^4.0.2",
+    "micromark-extension-gfm": "^3.0.0"
   }
 }

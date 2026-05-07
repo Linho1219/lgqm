@@ -1,6 +1,6 @@
 ---
 title: 抉择
-aid: "1008"
+volume: "1008"
 author: 恶魔后花园
 tags:
   - 同人

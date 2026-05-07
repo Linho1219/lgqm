@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { fetchIndex, fetchDir } from '../../lib/data.js';
+import markdown from '../../lib/markdown.js';
+
+export function getStaticPaths() {
+  const { lists } = fetchIndex();
+  return lists.map((list) => ({
+    params: { volume: list.volume },
+  }));
+}
+
+const { volume } = Astro.params;
+const data = fetchDir(volume);
+const { content, author, title, wordCount, pages } = data;
+
+const html = markdown(
+  content.replace(
+    /!\[(.*)\]\(\/(.*)\)/g,
+    '![$1](https://cdn.jsdelivr.net/gh/lzjluzijie/lgqm-tuku@main/$2)'
+  )
+);
+---
+
+<Layout title={title}>
+  <article class="post content">
+    <h3 class="title has-text-centered">{title}</h3>
+    <p class="subtitle has-text-centered" style="font-size: 0.95em;">
+      {author} ·
+      <a
+        href={`https://github.com/lzjluzijie/lgqm-sjk/blob/main/content/${volume}/_index.md`}
+      >
+        编辑本页
+      </a>
+    </p>
+    <Fragment set:html={html} />
+    <p class="subtitle mt-6" style="font-size: 1.25em;">
+      本卷共收录 {pages.length} 篇文章，约 {wordCount} 字。
+    </p>
+    <table class="table is-fullwidth table-auto">
+      <thead>
+        <tr>
+          <th>编号</th>
+          <th>标题</th>
+          <th>字数</th>
+        </tr>
+      </thead>
+      <tbody>
+        {pages.map((single) => (
+          <tr>
+            <td>{`${single.volume}.${single.chapter}`}</td>
+            <td>
+              <a href={`/${volume}/${single.chapter}`}>{single.title}</a>
+            </td>
+            <td>{single.wordCount}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </article>
+</Layout>

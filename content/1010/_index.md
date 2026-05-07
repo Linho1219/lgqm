@@ -1,6 +1,6 @@
 ---
 title: 临高启明外传
-aid: "1010"
+volume: "1010"
 author: 聂义峰
 tags:
   - 同人
