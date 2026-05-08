@@ -23,27 +23,29 @@ const html = markdown(content);
     <p class="subtitle" style="font-size: 1.25em;">
       以下是已收录分卷列表，共 {lists.length} 卷
     </p>
-    <table class="table is-fullwidth table-auto">
-      <thead>
-        <tr>
-          <th>编号</th>
-          <th>标题</th>
-          <th>作者</th>
-          <th>文章数量</th>
-        </tr>
-      </thead>
-      <tbody>
-        {lists.map((list) => (
+    <div class="table-wrapper">
+      <table class="table is-fullwidth table-auto">
+        <thead>
           <tr>
-            <td>{list.volume}</td>
-            <td>
-              <a href={`/${list.volume}/`}>{list.title}</a>
-            </td>
-            <td>{list.author}</td>
-            <td>{list.length}</td>
+            <th>编号</th>
+            <th>标题</th>
+            <th>作者</th>
+            <th>文章数量</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {lists.map((list) => (
+            <tr>
+              <td>{list.volume}</td>
+              <td>
+                <a href={`/${list.volume}/`}>{list.title}</a>
+              </td>
+              <td>{list.author}</td>
+              <td>{list.length}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   </article>
 </Layout>
