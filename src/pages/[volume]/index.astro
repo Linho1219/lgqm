@@ -22,7 +22,7 @@ const html = markdown(
 );
 ---
 
-<Layout title={title}>
+<Layout title={title} description={`${title} - ${author} - 共${pages.length}篇，约${wordCount}字。在线阅读临高启明。`}>
   <article class="post content">
     <h3 class="title has-text-centered">{title}</h3>
     <p class="subtitle has-text-centered" style="font-size: 0.95em;">

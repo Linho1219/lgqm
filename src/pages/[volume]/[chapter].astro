@@ -51,9 +51,11 @@ const prevLabel = prev ? '上一章' : '返回目录';
 const nextHref = next ? `/${volume}/${next.chapter}` : `/${volume}/`;
 const nextTitle = next ? next.title : volumeTitle;
 const nextLabel = next ? '下一章' : '返回目录';
+const descriptionStr = contentText.slice(0, 150).replace(/\n/g, ' ') + '...';
+
 ---
 
-<Layout title={`${title} - ${volumeTitle}`}>
+<Layout title={`${title} - ${volumeTitle}`} description={descriptionStr}>
   <nav class="chapter-nav">
     <a class="nav-card" href={prevHref}>
       <span class="nav-label">{prevLabel}</span>

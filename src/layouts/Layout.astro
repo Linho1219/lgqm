@@ -2,8 +2,14 @@
 import 'bulma/css/bulma.min.css';
 import '../styles/global.css';
 
-const { title } = Astro.props;
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = '临高启明公开图书馆为爱好者建立的开源项目，提供修订过的早期文本以及在线讨论环境。' } = Astro.props;
 const pageTitle = `${title} | 临高启明公开图书馆`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -18,8 +24,18 @@ const pageTitle = `${title} | 临高启明公开图书馆`;
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#da532c" />
     <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="临高启明公开图书馆" />
+    <meta property="og:locale" content="zh_CN" />
     <!-- Google Analytics -->
     <script
+      is:inline
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-N915MBK8Q7"></script>
     <script is:inline>
@@ -114,7 +130,7 @@ const pageTitle = `${title} | 临高启明公开图书馆`;
     </section>
 
     <section class="section" style="padding-top: 0;">
-      <main class="container">
+      <div class="container">
         <div class="giscus-wrapper" id="giscus-container">
           <script
             is:inline
@@ -135,7 +151,7 @@ const pageTitle = `${title} | 临高启明公开图书馆`;
             async
           ></script>
         </div>
-      </main>
+      </div>
     </section>
 
     <script is:inline>
