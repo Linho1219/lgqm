@@ -23,7 +23,7 @@ author: Halulu
 
 ###### H6
 
-![icon](/icon.png)
+![icon](/images/icon.png)
 
 1. 第一卷「启航」
 
